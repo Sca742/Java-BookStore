@@ -109,6 +109,15 @@ public class ControllerServlet extends HttpServlet {
 		response.sendRedirect("list");
 	}
 
+	private void deleteBook(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		int parameter = Integer.parseInt(request.getParameter("id"));
+		bookDAO.deleteBook(parameter);
+		response.sendRedirect("list");
+
+	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -120,16 +129,6 @@ public class ControllerServlet extends HttpServlet {
 		out.println("This is the doPost() method!");
 		doGet(request, response);
 
-	}
-
-	private void deleteBook(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		int parameter = Integer.parseInt(request.getParameter("id"));
-		bookDAO.deleteBook(parameter);
-		response.sendRedirect("list");
-		
-		
 	}
 
 }
